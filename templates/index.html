@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Image Classification</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static',filename='styles/index.css') }}"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="topnav">
+      <button class="tablinks" onclick="showTabs(event, 'home')">Home</button>
+      <button class="tablinks" onclick="showTabs(event, 'about')">About</button>
+    </div>
+    <div class="container home">
+      <h1 class="jumbotron bg-primary">Maleria Classfier</h1>
+      <br /><br />
+      <form
+        class="form-horizontal"
+        action="/submit"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="pwd"
+            >Upload Your Image :</label
+          >
+          <div class="col-sm-10">
+            <input
+              type="file"
+              class="form-control"
+              placeholder="Hours Studied"
+              name="my_image"
+              id="pwd"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="submit_btn">Submit</button>
+          </div>
+        </div>
+      </form>
+
+      {% if prediction %}
+      <div class="classifier_reasult">
+        <img src="{{img_path}}" height="100px" width="100px" />
+        <h2>Prediction : <i> {{prediction}} </i></h2>
+        <h4>Infected Probablity : <i> {{infected}} </i></h4>
+        <h4>Uninfected Probablity : <i> {{uninfected}} </i></h4>
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="container about">
+      <strong>
+        This project is a binery classifier to distinguish infected and
+        uninfected maleria cell from image. Model has an accuracy of 97.1
+      </strong>
+      <figure>
+        <img src="../static/images/accuracy.png" height="auto" width="100%" />
+        <figcaption>Confusion Matrix</figcaption>
+      </figure>
+    </div>
+    <footer>@ 2021 Dipendra Pant</footer>
+  </body>
+  <script>
+    function showTabs(event, tabName) {
+      var i, tabcontent, tablinks;
+
+      if (tabName === "about") {
+        document.getElementsByClassName("home")[0].style.display = "none";
+        document.getElementsByClassName("about")[0].style.display = "block";
+      } else {
+        document.getElementsByClassName("home")[0].style.display = "block";
+        document.getElementsByClassName("about")[0].style.display = "none";
+      }
+    }
+  </script>
+</html>
