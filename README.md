@@ -8,13 +8,14 @@ py -3 -m venv venv
 venv\Scripts\activate  
 pip install requirements.txt  
 ==================
-==================
-To Running Application
+
+Run Application  
 -----------
-flask run
+flask run  
 ==================
-==================
-Dataset Used For Training: https://www.kaggle.com/iarunava/cell-images-for-detecting-malaria
+Dataset Used   
+https://www.kaggle.com/iarunava/cell-images-for-detecting-malaria
+  
 Accuracy: 97.1%
 
 
